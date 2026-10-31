@@ -7,6 +7,8 @@ def login_handler(request):
     """Handle user login."""
     email = request.params.get("email")
     password = request.params.get("password")  # noqa: F841
+    if not email:
+    return {"status": "error", "message": "email is required"}
 
     validate_email(email)
 
